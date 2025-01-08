@@ -45,9 +45,9 @@ public class VeggieSelector : MonoBehaviour
     public Sprite turnipSprite;
     public Sprite zucchiniSprite;
 
-
     void Start()
     {
+        // Initialize veggie sprite mapping
         veggieSpriteMapping = new Dictionary<string, Sprite>
         {
             { "Artichoke", artichokeSprite },
@@ -80,27 +80,28 @@ public class VeggieSelector : MonoBehaviour
             { "Spinach", spinachSprite },
             { "Sweet Potato", sweetPotatoSprite },
             { "Tomato", tomatoSprite },
-            { "Turnip", tomatoSprite },
+            { "Turnip", turnipSprite },
             { "Zucchini", zucchiniSprite }
         };
 
-        Debug.Log($"Manual veggie mapping complete. Loaded {veggieSpriteMapping.Count} entries.");
-    
+        Debug.Log($"Veggie sprite mapping initialized with {veggieSpriteMapping.Count} entries.");
 
-    logManager = FindObjectOfType<LogManager>();
+        // Find LogManager
+        logManager = FindObjectOfType<LogManager>();
 
         if (logManager == null)
         {
-            Debug.LogError("LogManager not found! Ensure it's in the scene and enabled.");
+            Debug.LogError("LogManager not found! Ensure it's in the scene or marked as DontDestroyOnLoad.");
         }
 
+        // Set up the Next button
         if (nextButton == null)
         {
             Debug.LogError("Next Button is not assigned in the Inspector!");
         }
         else
         {
-            nextButton.onClick.AddListener(SaveSelections); // Attach the SaveSelections method to the Next button
+            nextButton.onClick.AddListener(SaveSelections);
         }
     }
 
@@ -112,36 +113,26 @@ public class VeggieSelector : MonoBehaviour
             return;
         }
 
-        // Use the GameObject's name as the veggie identifier
         string veggieName = veggieButton.gameObject.name;
 
-        // Check if the veggie is already selected
         if (selectedVeggies.Contains(veggieName))
         {
-            // Deselect the veggie immediately
+            // Deselect veggie
             selectedVeggies.Remove(veggieName);
-            SetButtonColor(veggieButton, false); // Deselect this button
+            SetButtonColor(veggieButton, false);
         }
         else
         {
-            // Select the veggie immediately
+            // Select veggie
             selectedVeggies.Add(veggieName);
-            SetButtonColor(veggieButton, true); // Highlight this button
+            SetButtonColor(veggieButton, true);
         }
 
-        // Debug: Print the current selected veggies
         Debug.Log($"Current selected veggies: {string.Join(", ", selectedVeggies)}");
     }
 
     private void SetButtonColor(Button button, bool isSelected)
     {
-        if (button == null)
-        {
-            Debug.LogError("Button is null in SetButtonColor!");
-            return;
-        }
-
-        // Access the Image component of the button and update its color
         Image buttonImage = button.GetComponent<Image>();
         if (buttonImage != null)
         {
@@ -157,7 +148,6 @@ public class VeggieSelector : MonoBehaviour
     {
         if (logManager != null)
         {
-            // Collect the selected veggie sprites
             List<Sprite> selectedSprites = new List<Sprite>();
             foreach (string veggieName in selectedVeggies)
             {
@@ -168,8 +158,8 @@ public class VeggieSelector : MonoBehaviour
                 }
             }
 
-            logManager.SetVeggieList(selectedSprites);
-            Debug.Log("Selected veggie sprites saved.");
+            logManager.SetVeggieList(selectedSprites); // Pass the selected veggie sprites to the LogManager
+            Debug.Log("Selected veggies passed to LogManager.");
 
             DontDestroyOnLoad(logManager);
         }
@@ -178,7 +168,7 @@ public class VeggieSelector : MonoBehaviour
             Debug.LogError("LogManager is null!");
         }
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LogVegetables");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LogVegetables_Scene");
     }
 
     private Sprite GetVeggieSpriteByName(string name)
@@ -189,9 +179,8 @@ public class VeggieSelector : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"Veggie name '{name}' not found in sprite mapping!");
-            return null; // Or return a default sprite if desired
+            Debug.LogError($"Veggie name '{name}' not found in the sprite mapping!");
+            return null;
         }
     }
-
 }
