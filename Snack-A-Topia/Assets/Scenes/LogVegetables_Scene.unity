@@ -220,7 +220,6 @@ RectTransform:
   - {fileID: 560922024}
   - {fileID: 93651650}
   - {fileID: 1126965047}
-  - {fileID: 1680999994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -364,8 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a243124d37efd949bd8a57e41ff68a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentArea: {fileID: 1978996828}
-  logEntryPrefab: {fileID: 6731336995093620881, guid: 3e0481ac79e946447b5b780fd28f2257, type: 3}
+  logScreenController: {fileID: 2046479594}
 --- !u!4 &208937449
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,7 +1108,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 86165737}
+  m_Father: {fileID: 1714490868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1157,12 +1155,12 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1680999997}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2046479594}
-        m_TargetAssemblyTypeName: LogScreenControler, Assembly-CSharp
+      - m_Target: {fileID: 208937448}
+        m_TargetAssemblyTypeName: LoggingSceneManager, Assembly-CSharp
         m_MethodName: SaveProgress
         m_Mode: 1
         m_Arguments:
@@ -1375,6 +1373,7 @@ RectTransform:
   m_Children:
   - {fileID: 462853030}
   - {fileID: 1687365416}
+  - {fileID: 1680999994}
   m_Father: {fileID: 560922024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1521,12 +1520,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046479593}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9914cf10d4f55064a9f0cf0974739285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logEntries: []
+  contentArea: {fileID: 1978996828}
+  logEntryPrefab: {fileID: 6731336995093620881, guid: 3e0481ac79e946447b5b780fd28f2257, type: 3}
 --- !u!4 &2046479595
 Transform:
   m_ObjectHideFlags: 0

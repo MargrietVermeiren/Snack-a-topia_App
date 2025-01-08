@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class VeggieSelector : MonoBehaviour
 {
-    public List<string> selectedVeggies = new List<string>(); // To store selected veggies
+    public List<string> selectedVeggies = new List<string>(); // To store selected veggie names
     public Button nextButton; // Reference to your "Next" button
-    private LogManager logManager; // Reference to LogManager
+    private LogManager logManager; // Reference to the LogManager
     public Color selectedColor = Color.green; // Color for selected veggies
     public Color defaultColor = Color.white; // Default color for unselected veggies
     private Dictionary<string, Sprite> veggieSpriteMapping;

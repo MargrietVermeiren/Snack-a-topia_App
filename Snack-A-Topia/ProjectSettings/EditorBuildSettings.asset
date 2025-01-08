@@ -44,5 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KidsStart_Scene.unity
     guid: 1e6e01e0189c25747bfb340a97d3089d
+  - enabled: 1
+    path: Assets/Scenes/Code_Scene.unity
+    guid: d5e0d76765e93d742bed7daca1d37343
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: ef1b1b78536df714caaf4c6d2e711da2, type: 2}
